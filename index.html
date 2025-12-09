@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Dandan's Snake</title>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+
+    <button id="pauseButton" onclick="togglePause()">
+      <span id="pauseIcon">⏸️</span>
+    </button>
+
+    <div id="mobilePauseModal">
+      <h2>PAUSED</h2>
+      <div id="pauseMessage">Press 'SPACE' or click RESUME to continue.</div>
+      <button id="resumeButton">RESUME</button>
+    </div>
+
+    <div id="gameOverModal">
+      <h2>GAME OVER</h2>
+      <div id="scoreDisplay">SCORE: <span id="finalScore">0</span></div>
+
+      <div id="highScoreDisplay">
+        HIGH SCORE: <span id="finalHighScore">0</span>
+      </div>
+
+      <button id="restartButton">RESTART</button>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
