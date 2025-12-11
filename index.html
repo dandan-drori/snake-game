@@ -8,41 +8,62 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#000000" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/logo/apple-touch-icon.png"
+    />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/logo/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/logo/favicon-16x16.png"
+    />
     <link rel="shortcut icon" href="assets/logo/favicon.ico" />
   </head>
   <body>
-    <canvas id="gameCanvas"></canvas>
-
-    <button id="pauseButton" onclick="togglePause()">
-      <div class="play-icon"></div>
-      <div class="pause-icon">
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-    </button>
-
-    <div id="mobilePauseModal" class="modal">
-      <h2>PAUSED</h2>
-      <div id="pauseMessage">Press 'SPACE' or click RESUME to continue.</div>
-      <button id="resumeButton">RESUME</button>
+    <div id="orientation-message">
+      <p>Please Rotate Your Device</p>
+      <p>This game requires landscape orientation for the best experience.</p>
     </div>
 
-    <div id="gameOverModal" class="modal">
-      <h2>GAME OVER</h2>
-      <div id="scoreDisplay">
-        <img src="assets/apple/apple.png" alt="" />
-        <span id="finalScore">0</span>
+    <div class="game-container">
+      <canvas id="gameCanvas"></canvas>
+
+      <button id="pauseButton" onclick="togglePause()">
+        <div class="play-icon"></div>
+        <div class="pause-icon">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </button>
+
+      <div id="mobilePauseModal" class="modal">
+        <h2>PAUSED</h2>
+        <div id="pauseMessage">Press 'SPACE' or click RESUME to continue.</div>
+        <button id="resumeButton">RESUME</button>
       </div>
 
-      <div id="highScoreDisplay">
-        HIGH SCORE: <span id="finalHighScore">0</span>
-      </div>
+      <div id="gameOverModal" class="modal">
+        <h2>GAME OVER</h2>
+        <div id="scoreDisplay">
+          <img src="assets/apple/apple.png" alt="" />
+          <span id="finalScore">0</span>
+        </div>
 
-      <button id="restartButton">RESTART</button>
+        <div id="highScoreDisplay">
+          HIGH SCORE: <span id="finalHighScore">0</span>
+        </div>
+
+        <button id="restartButton">RESTART</button>
+      </div>
     </div>
 
     <script src="main.js"></script>

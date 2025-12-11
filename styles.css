@@ -186,3 +186,36 @@ body {
 #resumeButton:hover {
   background-color: #004400;
 }
+
+#game-container {
+    display: block; /* Show the game */
+    width: 100vw;
+    height: 100vh;
+}
+
+#orientation-message {
+    display: none; /* Hide the message */
+    background-color: #000; /* Use a solid background */
+    color: #fff;
+    text-align: center;
+    padding-top: 100%;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; 
+}
+
+@media (orientation: portrait) {
+  /* Hide the UI that looks broken in portrait mode */
+  #game-container {
+    display: none;
+  }
+
+  /* Show a custom, friendly instruction */
+  #orientation-message {
+    display: block;
+  }
+}
