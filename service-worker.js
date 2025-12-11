@@ -1,4 +1,4 @@
-const CACHE_NAME = 'snake-game-cache-v1';
+const CACHE_NAME = 'snake-game-cache-v2';
 const urlsToCache = [
   './',
   'index.html',
@@ -7,6 +7,10 @@ const urlsToCache = [
   'manifest.json',
   'assets/logo/icon-192x192.png',
   'assets/logo/icon-512x512.png',
+  'assets/logo/apple-touch-icon.png',
+  'assets/logo/favicon.ico',
+  'assets/logo/favicon-16x16.png',
+  'assets/logo/favicon-32x32.png',
   'assets/apple/apple.png',
   'assets/snake/tail_up.png',
   'assets/snake/tail_right.png',
