@@ -10,18 +10,25 @@
     <canvas id="gameCanvas"></canvas>
 
     <button id="pauseButton" onclick="togglePause()">
-      <span id="pauseIcon">⏸️</span>
+      <div class="play-icon"></div>
+      <div class="pause-icon">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
     </button>
 
-    <div id="mobilePauseModal">
+    <div id="mobilePauseModal" class="modal">
       <h2>PAUSED</h2>
       <div id="pauseMessage">Press 'SPACE' or click RESUME to continue.</div>
       <button id="resumeButton">RESUME</button>
     </div>
 
-    <div id="gameOverModal">
+    <div id="gameOverModal" class="modal">
       <h2>GAME OVER</h2>
-      <div id="scoreDisplay">SCORE: <span id="finalScore">0</span></div>
+      <div id="scoreDisplay">
+        <img src="assets/apple/apple.png" alt="">
+        <span id="finalScore">0</span>
+      </div>
 
       <div id="highScoreDisplay">
         HIGH SCORE: <span id="finalHighScore">0</span>

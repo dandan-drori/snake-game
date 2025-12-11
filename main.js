@@ -16,6 +16,7 @@ const SPEED_INCREASE_INTERVAL = 5; // Increase speed every 5 points
 const SPEED_REDUCTION_AMOUNT = 5; // Reduce delay by 5ms each time
 const MIN_GAME_SPEED = 40; // Minimum delay (maximum speed)
 const HIGH_SCORE_KEY = 'snakeHighScore'; // Key for localStorage
+const SCORE_INCREMENT = 1; // Points per food
 
 const SWIPE_THRESHOLD = 30; // Minimum pixels to count as a swipe
 
@@ -267,21 +268,21 @@ function getBodySpriteKey(prev, current, next) {
 
 /** Handles keydown events for game controls including pause and movement. */
 function handleKeyDown(e) {
-  if (isGameOver) return;
-
   // 1. Pause Logic
   if (e.key === ' ') {
-    togglePause();
-    e.preventDefault();
+    e.preventDefault(); // Prevent scrolling
+    isGameOver ? initializeGame() : togglePause();
     return;
   }
 
+  if (isGameOver) return;
+
   // 2. Movement Logic
   if (MOVEMENT_KEYS.includes(e.key)) {
+    e.preventDefault(); // Prevent scrolling
     if (isPaused) return; // Block movement input if paused
 
     queueDirection(e.key);
-    e.preventDefault();
   }
 }
 
@@ -353,7 +354,7 @@ function update() {
   snake.unshift(newHead);
 
   if (hasEaten) {
-    score += 5;
+    score += SCORE_INCREMENT;
 
     // --- SPEED SCALING LOGIC ---
     // Check if the score is a multiple of the speed interval and speed is not maxed out
@@ -434,6 +435,25 @@ function drawSnake() {
   }
 }
 
+function drawScore() {
+  ctx.fillStyle = 'black';
+  ctx.font = '24px "Pixelify Sans", monospace';
+  ctx.textAlign = 'left';
+  ctx.drawImage(APPLE_SPRITE, 10, 14.5, 25, 25);
+  ctx.fillText(`${score}`, 40, 35);
+}
+
+function drawFood() {
+  ctx.drawImage(APPLE_SPRITE, food.x, food.y, food.width, food.height);
+}
+
+function drawLoadingScreen() {
+  ctx.fillStyle = 'white';
+  ctx.font = '24px "PressStart2P", monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('Loading Assets...', canvas.width / 2, canvas.height / 2);
+}
+
 /** Draws the entire game frame including the grid, food, and UI elements. */
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -441,35 +461,13 @@ function draw() {
 
   // Ensure all assets are loaded before drawing sprites
   if (!allImagesLoaded) {
-    // Fallback or loading message
-    ctx.fillStyle = 'white';
-    ctx.font = '24px "PressStart2P", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('Loading Assets...', canvas.width / 2, canvas.height / 2);
+    drawLoadingScreen();
     return;
   }
 
-  // draw food
-  ctx.drawImage(APPLE_SPRITE, food.x, food.y, food.width, food.height);
-
-  // Draw the Snake
+  drawFood();
   drawSnake();
-
-  // Draw Score
-  ctx.fillStyle = '#00FF00';
-  ctx.font = '24px "Pixelify Sans", monospace';
-  ctx.textAlign = 'left';
-  ctx.fillText(`SCORE: ${score}`, 20, 35);
-
-  if (isPaused) {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; // Semi-transparent white background
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#000000'; // Black text
-    ctx.font = '48px "PressStart2P", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
-  }
+  drawScore();
 }
 
 /** Draws a checkerboard grid pattern on the canvas. */
