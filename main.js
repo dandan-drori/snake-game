@@ -73,6 +73,25 @@ let allImagesLoaded = false; // Flag to track if all images are loaded
 let imagesToLoad = HEAD_TAIL_DIRECTIONS.length * 2 + BODY_SEGMENTS.length; // 4*2 + 6 = 14 total images
 let imagesLoadedCount = 0; // Counter for loaded images
 
+/** Registers the service worker for offline capabilities and caching. */
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then((registration) => {
+          console.log(
+            'ServiceWorker registration successful with scope: ',
+            registration.scope
+          );
+        })
+        .catch((err) => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+}
+
 /** Checks if all images have been loaded and sets the flag accordingly. */
 function checkLoadComplete() {
   imagesLoadedCount++;
@@ -684,6 +703,8 @@ window.addEventListener('touchstart', handleTouchStart, false);
 window.addEventListener('touchmove', handleTouchMove, false);
 window.addEventListener('touchend', handleTouchEnd, false);
 
+// Load service worker for PWA functionality
+registerServiceWorker();
 // Initial resize to fit the screen
 resizeCanvas();
 // Start the game
