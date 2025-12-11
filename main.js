@@ -92,6 +92,18 @@ function registerServiceWorker() {
   }
 }
 
+/** Locks the screen orientation to landscape mode if supported. */
+function lockToLandscape() {
+  if (screen.orientation && screen.orientation.lock) {
+    screen.orientation
+      .lock('landscape')
+      .then(() => {
+        console.log('Orientation locked to landscape.');
+      })
+      .catch(() => {});
+  }
+}
+
 /** Checks if all images have been loaded and sets the flag accordingly. */
 function checkLoadComplete() {
   imagesLoadedCount++;
@@ -109,7 +121,6 @@ function checkLoadComplete() {
 function loadSprites(basePath = 'assets/snake/') {
   // load apple sprite
   APPLE_SPRITE.src = 'assets/apple/apple.png';
-  APPLE_SPRITE.onload = () => console.log('Apple sprite loaded!');
   APPLE_SPRITE.onerror = () =>
     console.error('Failed to load apple sprite: assets/apple/apple.png');
 
@@ -702,6 +713,9 @@ window.addEventListener('orientationchange', resizeCanvas);
 window.addEventListener('touchstart', handleTouchStart, false);
 window.addEventListener('touchmove', handleTouchMove, false);
 window.addEventListener('touchend', handleTouchEnd, false);
+
+// Lock orientation to landscape on page load
+window.addEventListener('load', lockToLandscape);
 
 // Load service worker for PWA functionality
 registerServiceWorker();
