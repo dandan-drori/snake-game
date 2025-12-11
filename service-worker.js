@@ -1,12 +1,12 @@
-const CACHE_NAME = 'snake-game-cache-v2';
+const CACHE_NAME = 'snake-game-cache-v3';
 const urlsToCache = [
   './',
   'index.html',
   'styles.css',
   'main.js',
   'manifest.json',
-  'assets/logo/icon-192x192.png',
-  'assets/logo/icon-512x512.png',
+  'assets/logo/android-chrome-192x192.png',
+  'assets/logo/android-chrome-512x512.png',
   'assets/logo/apple-touch-icon.png',
   'assets/logo/favicon.ico',
   'assets/logo/favicon-16x16.png',
