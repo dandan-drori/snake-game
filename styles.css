@@ -41,9 +41,7 @@ body {
   display: block;
   margin: 0 auto;
 
-  /* Importantly, set the canvas rendering size to a fixed value, 
-       but let CSS handle the display size. */
-  border: 5px solid #00aa00; /* Keep border style */
+  border: 5px solid #3c4048; /* Keep border style */
 
   touch-action: none;
   user-select: none;

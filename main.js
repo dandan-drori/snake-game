@@ -46,8 +46,8 @@ const BODY_SEGMENTS = [
   'topright',
 ]; // Specialized body segments
 const PARTS = ['head', 'tail']; // For loading head and tail sprites
-const DARK_GREEN = '#1aa61aff'; // Darker shade of green for tiles
-const LIGHT_GREEN = '#00AA00'; // Lighter shade of green for tiles
+const DARK_GREEN = '#3C4048'; // Darker shade of green for tiles
+const LIGHT_GREEN = '#4F555D'; // Lighter shade of green for tiles
 
 canvas.width = BASE_CANVAS_WIDTH; // Set initial width
 canvas.height = BASE_CANVAS_HEIGHT; // Set initial height
@@ -466,7 +466,7 @@ function drawSnake() {
 }
 
 function drawScore() {
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = 'white';
   ctx.font = '24px "Pixelify Sans", monospace';
   ctx.textAlign = 'left';
   ctx.drawImage(APPLE_SPRITE, 10, 14.5, 25, 25);
