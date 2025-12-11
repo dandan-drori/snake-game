@@ -4,6 +4,7 @@ const urlsToCache = [
   'index.html',
   'styles.css',
   'main.js',
+  'manifest.json',
   'assets/logo/icon-192x192.png',
   'assets/logo/icon-512x512.png',
   'assets/apple/apple.png',
@@ -21,7 +22,6 @@ const urlsToCache = [
   'assets/snake/body_bottomright.png',
   'assets/snake/body_topleft.png',
   'assets/snake/body_topright.png',
-  'manifest.json',
 ];
 
 // Install: Caches all files listed in urlsToCache
